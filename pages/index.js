@@ -1,6 +1,8 @@
 import { getFeaturedEvents, getAllEvents } from '../dummy-data';
 import { EventList } from '../components/events/event-list';
 
+// Random comment
+
 const HomePage = () => {
   const featuerdEvents = getFeaturedEvents();
   const allEvents = getAllEvents();
