@@ -1,4 +1,4 @@
-import { getFeaturedEvents, getAllEvents } from '../dummy-data';
+import { getFeaturedEvents, getAllEvents } from '../helpers';
 import { EventList } from '../components/events/event-list';
 
 // Random comment
