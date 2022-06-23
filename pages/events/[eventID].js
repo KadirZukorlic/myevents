@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { getEventById } from '../../dummy-data';
+import { getEventById } from '../../helpers/index';
 import { useRouter } from 'next/router';
 import EventSummary from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
