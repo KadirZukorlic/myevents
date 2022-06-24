@@ -18,7 +18,6 @@ export const getAllEvents = async () => {
       //   date: data[key].date,
     });
   }
-  console.log(events);
   return events;
 };
 

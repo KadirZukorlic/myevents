@@ -9,7 +9,6 @@ import { Button } from '../../components/ui/button';
 
 const FilteredEventsPage = () => {
   const router = useRouter();
-  console.log(router.query);
 
   const filterData = router.query.slug;
 
