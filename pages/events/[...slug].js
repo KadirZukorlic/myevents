@@ -32,8 +32,15 @@ const FilteredEventsPage = () => {
     }
   }, [data]);
 
+  let pageHeadData = <Head></Head>;
+
   if (!events) {
-    return <p className="center">Loading...</p>;
+    return (
+      <Fragment>
+        {pageHeadData}
+        <p className="center">Loading...</p>
+      </Fragment>
+    );
   }
 
   const filteredYear = filterData[0];
@@ -53,6 +60,7 @@ const FilteredEventsPage = () => {
   ) {
     return (
       <Fragment>
+        {pageHeadData}
         <ErrorAlert>
           <p>Invalid filter. Please adjust your values!</p>
         </ErrorAlert>
@@ -74,6 +82,7 @@ const FilteredEventsPage = () => {
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <Fragment>
+        {pageHeadData}
         <ErrorAlert>
           <p>No Events found!</p>
         </ErrorAlert>
@@ -87,13 +96,7 @@ const FilteredEventsPage = () => {
   const date = new Date(numYear, numMonth - 1);
   return (
     <Fragment>
-      <Head>
-        <title>Chosen Events</title>
-        <meta
-          name="description"
-          content={`All events for ${numMonth}/${numYear}`}
-        />
-      </Head>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </Fragment>
