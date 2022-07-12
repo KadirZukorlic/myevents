@@ -23,7 +23,6 @@ function handler(req, res) {
     };
 
     console.log(newComment);
-    console.log(req.body);
 
     res.status(201).json({ message: 'Added Comment!', comment: newComment });
   }
