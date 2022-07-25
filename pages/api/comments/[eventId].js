@@ -1,5 +1,11 @@
-function handler(req, res) {
+import { MongoClient } from 'mongodb';
+
+async function handler(req, res) {
   const eventId = req.query.eventId; // eventId = ime fajla [eventId].js
+
+  const client = await MongoClient.connect(
+    'mongodb+srv://Kadir:starfallkacobre1@cluster0.h22nx.mongodb.net/?retryWrites=true&w=majority'
+  );
 
   if (req.method === 'POST') {
     const { email, name, text } = req.body;
@@ -16,13 +22,17 @@ function handler(req, res) {
     }
 
     const newComment = {
-      id: new Date().toISOString(),
       name,
       email,
       text,
+      eventId,
     };
 
-    console.log(newComment);
+    const db = client.db('comments');
+
+    const result = await db.collection('comment').insertOne(newComment);
+
+    console.log(result);
 
     res.status(201).json({ message: 'Added Comment!', comment: newComment });
   }
@@ -43,6 +53,8 @@ function handler(req, res) {
 
     res.status(200).json({ comments: dummyList });
   }
+
+  client.close();
 }
 
 export default handler;
