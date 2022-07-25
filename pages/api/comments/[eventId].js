@@ -34,6 +34,8 @@ async function handler(req, res) {
 
     console.log(result);
 
+    newComment.id = result.insertedId;
+
     res.status(201).json({ message: 'Added Comment!', comment: newComment });
   }
 
