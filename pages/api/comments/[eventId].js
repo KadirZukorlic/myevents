@@ -28,9 +28,9 @@ async function handler(req, res) {
       eventId,
     };
 
-    const db = client.db('comments');
+    const db = client.db('events');
 
-    const result = await db.collection('comment').insertOne(newComment);
+    const result = await db.collection('comments').insertOne(newComment);
 
     console.log(result);
 
