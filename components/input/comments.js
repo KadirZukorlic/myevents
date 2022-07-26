@@ -19,8 +19,8 @@ function Comments(props) {
       fetch('/api/comments/' + eventId)
         .then((response) => response.json())
         .then((data) => {
-          setComments(data.comments);
           console.log(data.comments);
+          setComments(data.comments);
         });
     }
   }, [showComments]);

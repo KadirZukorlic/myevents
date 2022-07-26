@@ -40,20 +40,17 @@ async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const dummyList = [
-      {
-        id: 'c1',
-        name: 'Kadir',
-        text: 'Selam za najbolju stranku svi gradzani glasaju za vas SAMO PRAVO SPP',
-      },
-      {
-        id: 'C2',
-        name: 'Rasem Skrijelj',
-        text: 'Jeli vam to VUCIC naredio vama iz SPP jedna jedina stranka demokratske akcije SDA SULJO',
-      },
-    ];
+    const db = client.db('events');
 
-    res.status(200).json({ comments: dummyList });
+    const documents = await db
+      .collection('comments')
+      .find()
+      .sort({ _id: -1 }) // sorting comments that latest comment is first in fetching
+      .toArray();
+
+    console.log(documents);
+
+    res.status(200).json({ comments: documents });
   }
 
   client.close();
