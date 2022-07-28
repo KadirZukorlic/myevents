@@ -7,7 +7,7 @@ export const MainHeader = () => {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/">Book Event</Link>
+        <Link href="/">My Events</Link>
       </div>
       <nav className={classes.navigation}>
         <ul>
